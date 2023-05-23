@@ -1,0 +1,7 @@
+# Default ignore files
+/.idea/
+/build/
+/External Libraries/
+/Scratched and Consoles/
+/target/
+/allure-results/
