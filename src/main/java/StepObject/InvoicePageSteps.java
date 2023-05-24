@@ -14,6 +14,11 @@ public class InvoicePageSteps extends InvoicePage {
         cartPageSteps.continueBtn.shouldNotBe(Condition.visible, Duration.ofMillis(2000));
         return this;
     }
+    @Step("Click on the Individual button")
+    public InvoicePageSteps ClickOnIndividualBtn() {
+        individual.click();
+        return this;
+    }
     @Step("Click on Send button")
     public InvoicePageSteps ClickOnSendBtn() {
         sendBtn.click();

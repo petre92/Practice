@@ -1,13 +1,10 @@
 package PageObject;
 import com.codeborne.selenide.SelenideElement;
-
 import static DataObject.SearchBoxData.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
 
 public class SearchBox {
-
 
     public SelenideElement
 

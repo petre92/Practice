@@ -27,11 +27,36 @@ public class InvoicePageTest extends ChromeRunner {
                 .ChooseBinder()
                 .AddThirdProductToCart()
                 .ClickOnCart();
+        Assert.assertFalse(invoicePageSteps.legalEntity.is(Condition.visible),
+                "Legal entity is not visible");
+        Assert.assertFalse(invoicePageSteps.individual.is(Condition.visible),
+                "Individual is not visible");
         invoicePageSteps.ClickOnContinueBtn();
         Assert.assertTrue(invoicePageSteps.legalEntity.is(Condition.visible),
                 "Legal entity is visible");
         Assert.assertTrue(invoicePageSteps.individual.is(Condition.visible),
                 "Individual is visible");
+    }
+    @Test
+    @Description("18(2nd version). Legal entity and individual invoice forms appear")
+    @Severity(SeverityLevel.BLOCKER)
+    public void InvoiceFormsAppearTest_2() {
+        productsPageSteps
+                .ClickProducts()
+                .ChooseFirstCategory()
+                .ChooseBinder()
+                .AddThirdProductToCart()
+                .ClickOnCart();
+        Assert.assertFalse(invoicePageSteps.getLegalEntityForm.isDisplayed(),
+                "Legal entity form is not visible");
+        Assert.assertFalse(invoicePageSteps.individualForm.isDisplayed(),
+                "Individual form is not visible");
+        invoicePageSteps.ClickOnContinueBtn();
+        Assert.assertTrue(invoicePageSteps.getLegalEntityForm.isDisplayed(),
+                "Legal entity form is visible");
+        invoicePageSteps.ClickOnIndividualBtn();
+        Assert.assertTrue(invoicePageSteps.individualForm.isDisplayed(),
+                "Individual from is visible");
     }
     @Test
     @Description("19. Company's empty Name field becomes red after clicking Send button")
@@ -44,12 +69,10 @@ public class InvoicePageTest extends ChromeRunner {
                 .AddThirdProductToCart()
                 .ClickOnCart();
         invoicePageSteps.ClickOnContinueBtn();
-        Assert.assertFalse(invoicePageSteps.companyName.has(
-                Condition.attribute("style","border: 1px solid red" )),
+        Assert.assertFalse(invoicePageSteps.companyName.has(Condition.attribute(style,red )),
                 "Company name field does not have red border");
                 invoicePageSteps.ClickOnSendBtn();
-        Assert.assertTrue(invoicePageSteps.companyName.has(
-                Condition.attribute("style", "border: 1px solid red;")),
+        Assert.assertTrue(invoicePageSteps.companyName.has(Condition.attribute(style, red)),
                 "Company name field has red border" );
     }
     @Test
@@ -63,12 +86,10 @@ public class InvoicePageTest extends ChromeRunner {
                 .AddThirdProductToCart()
                 .ClickOnCart();
         invoicePageSteps.ClickOnContinueBtn();
-        Assert.assertFalse(invoicePageSteps.companyCode.has(
-                        Condition.attribute("style","border: 1px solid red" )),
+        Assert.assertFalse(invoicePageSteps.companyCode.has(Condition.attribute(style,red )),
                 "Company code field does not have red border");
         invoicePageSteps.ClickOnSendBtn();
-        Assert.assertTrue(invoicePageSteps.companyCode.has(
-                        Condition.attribute("style", "border: 1px solid red;")),
+        Assert.assertTrue(invoicePageSteps.companyCode.has(Condition.attribute(style, red)),
                 "Company code field has red border" );
     }
     @Test
@@ -82,12 +103,10 @@ public class InvoicePageTest extends ChromeRunner {
                 .AddThirdProductToCart()
                 .ClickOnCart();
         invoicePageSteps.ClickOnContinueBtn();
-        Assert.assertFalse(invoicePageSteps.companyAddress.has(
-                        Condition.attribute("style","border: 1px solid red" )),
+        Assert.assertFalse(invoicePageSteps.companyAddress.has(Condition.attribute(style,red)),
                 "Company address field does not have red border");
         invoicePageSteps.ClickOnSendBtn();
-        Assert.assertTrue(invoicePageSteps.companyAddress.has(
-                        Condition.attribute("style", "border: 1px solid red;")),
+        Assert.assertTrue(invoicePageSteps.companyAddress.has(Condition.attribute(style, red)),
                 "Company address field has red border" );
     }
     @Test
@@ -101,12 +120,10 @@ public class InvoicePageTest extends ChromeRunner {
                 .AddThirdProductToCart()
                 .ClickOnCart();
         invoicePageSteps.ClickOnContinueBtn();
-        Assert.assertFalse(invoicePageSteps.companyPhone.has(
-                        Condition.attribute("style","border: 1px solid red" )),
+        Assert.assertFalse(invoicePageSteps.companyPhone.has(Condition.attribute(style,red)),
                 "Company phone field does not have red border");
         invoicePageSteps.ClickOnSendBtn();
-        Assert.assertTrue(invoicePageSteps.companyPhone.has(
-                        Condition.attribute("style", "border: 1px solid red;")),
+        Assert.assertTrue(invoicePageSteps.companyPhone.has(Condition.attribute(style,red)),
                 "Company phone field has red border" );
     }
     @Test
@@ -120,12 +137,10 @@ public class InvoicePageTest extends ChromeRunner {
                 .AddThirdProductToCart()
                 .ClickOnCart();
         invoicePageSteps.ClickOnContinueBtn();
-        Assert.assertFalse(invoicePageSteps.companyDesiredDate.has(
-                        Condition.attribute("style","border: 1px solid red" )),
+        Assert.assertFalse(invoicePageSteps.companyDesiredDate.has(Condition.attribute(style,red)),
                 "Company Desired Date field does not have red border");
         invoicePageSteps.ClickOnSendBtn();
-        Assert.assertTrue(invoicePageSteps.companyDesiredDate.has(
-                        Condition.attribute("style", "border: 1px solid red;")),
+        Assert.assertTrue(invoicePageSteps.companyDesiredDate.has(Condition.attribute(style,red)),
                 "Company Desired Date field has red border" );
     }
     @Test
@@ -139,12 +154,10 @@ public class InvoicePageTest extends ChromeRunner {
                 .AddThirdProductToCart()
                 .ClickOnCart();
         invoicePageSteps.ClickOnContinueBtn();
-        Assert.assertFalse(invoicePageSteps.companyEmail.has(
-                        Condition.attribute("style","border: 1px solid red" )),
+        Assert.assertFalse(invoicePageSteps.companyEmail.has(Condition.attribute(style,red)),
                 "Company email field does not have red border");
         invoicePageSteps.ClickOnSendBtn();
-        Assert.assertTrue(invoicePageSteps.companyEmail.has(
-                        Condition.attribute("style", "border: 1px solid red;")),
+        Assert.assertTrue(invoicePageSteps.companyEmail.has(Condition.attribute(style,red)),
                 "Company email field has red border" );
     }
     @Test
@@ -158,18 +171,15 @@ public class InvoicePageTest extends ChromeRunner {
                 .AddThirdProductToCart()
                 .ClickOnCart();
         invoicePageSteps.ClickOnContinueBtn();
-        Assert.assertFalse(invoicePageSteps.companyName.has(
-                        Condition.attribute("style","border: 1px solid red" )),
+        Assert.assertFalse(invoicePageSteps.companyName.has(Condition.attribute(style,red)),
                 "Company name field does not have red border");
         invoicePageSteps.ClickOnSendBtn();
-        Assert.assertTrue(invoicePageSteps.companyName.has(
-                        Condition.attribute("style", "border: 1px solid red;")),
+        Assert.assertTrue(invoicePageSteps.companyName.has(Condition.attribute(style,red)),
                 "Company name field has red border" );
         invoicePageSteps
                 .EnterCompanyName(companyNameInput)
                 .ClickOnSendBtn();
-        Assert.assertFalse(invoicePageSteps.companyName.has(
-                        Condition.attribute("style","border: 1px solid red" )),
+        Assert.assertFalse(invoicePageSteps.companyName.has(Condition.attribute(style,red)),
                 "Company name field does not have red border");
     }
     @Test
@@ -202,14 +212,12 @@ public class InvoicePageTest extends ChromeRunner {
                 .AddThirdProductToCart()
                 .ClickOnCart();
         invoicePageSteps.ClickOnContinueBtn();
-        Assert.assertFalse(invoicePageSteps.companyCode.has(
-                        Condition.attribute("style","border: 1px solid red" )),
+        Assert.assertFalse(invoicePageSteps.companyCode.has(Condition.attribute(style,red)),
                 "Company code field does not have red border");
         invoicePageSteps
                 .EnterCompanyCode(eightDigitsInput)
                 .ClickOnSendBtn();
-        Assert.assertTrue(invoicePageSteps.companyCode.has(
-                        Condition.attribute("style", "border: 1px solid red;")),
+        Assert.assertTrue(invoicePageSteps.companyCode.has(Condition.attribute(style,red)),
                 "Company code field has red border" );
     }
     @Test
@@ -241,19 +249,16 @@ public class InvoicePageTest extends ChromeRunner {
                 .AddThirdProductToCart()
                 .ClickOnCart();
         invoicePageSteps.ClickOnContinueBtn();
-        Assert.assertFalse(invoicePageSteps.companyCode.has(
-                        Condition.attribute("style","border: 1px solid red" )),
+        Assert.assertFalse(invoicePageSteps.companyCode.has(Condition.attribute(style,red)),
                 "Company code field does not have red border");
         invoicePageSteps.ClickOnSendBtn();
-        Assert.assertTrue(invoicePageSteps.companyCode.has(
-                        Condition.attribute("style", "border: 1px solid red;")),
+        Assert.assertTrue(invoicePageSteps.companyCode.has(Condition.attribute(style,red)),
                 "Company code field has red border" );
         invoicePageSteps
                 .EnterCompanyCode(nineDigitsInput)
                 .ClickOnSendBtn();
-        Assert.assertFalse(invoicePageSteps.companyName.has(
-                        Condition.attribute("style","border: 1px solid red" )),
-                "Company name field does not have red border");
+        Assert.assertFalse(invoicePageSteps.companyCode.has(Condition.attribute(style,red)),
+                "Company code field does not have red border");
     }
     @Test
     @Description("30. Company's filled Address field is not red after clicking Send button")
@@ -266,18 +271,15 @@ public class InvoicePageTest extends ChromeRunner {
                 .AddThirdProductToCart()
                 .ClickOnCart();
         invoicePageSteps.ClickOnContinueBtn();
-        Assert.assertFalse(invoicePageSteps.companyAddress.has(
-                        Condition.attribute("style","border: 1px solid red" )),
+        Assert.assertFalse(invoicePageSteps.companyAddress.has(Condition.attribute(style,red)),
                 "Company address field does not have red border");
         invoicePageSteps.ClickOnSendBtn();
-        Assert.assertTrue(invoicePageSteps.companyAddress.has(
-                        Condition.attribute("style", "border: 1px solid red;")),
+        Assert.assertTrue(invoicePageSteps.companyAddress.has(Condition.attribute(style,red)),
                 "Company address field has red border" );
         invoicePageSteps
                 .EnterCompanyAddress(textInput)
                 .ClickOnSendBtn();
-        Assert.assertFalse(invoicePageSteps.companyAddress.has(
-                        Condition.attribute("style","border: 1px solid red" )),
+        Assert.assertFalse(invoicePageSteps.companyAddress.has(Condition.attribute(style,red)),
                 "Company address field does not have red border");
     }
     @Test
@@ -309,14 +311,12 @@ public class InvoicePageTest extends ChromeRunner {
                 .AddThirdProductToCart()
                 .ClickOnCart();
         invoicePageSteps.ClickOnContinueBtn();
-        Assert.assertFalse(invoicePageSteps.companyPhone.has(
-                        Condition.attribute("style","border: 1px solid red" )),
+        Assert.assertFalse(invoicePageSteps.companyPhone.has(Condition.attribute(style,red)),
                 "Company phone field does not have red border");
         invoicePageSteps
                 .EnterCompanyPhone(eightDigitsInput)
                 .ClickOnSendBtn();
-        Assert.assertTrue(invoicePageSteps.companyPhone.has(
-                        Condition.attribute("style", "border: 1px solid red;")),
+        Assert.assertTrue(invoicePageSteps.companyPhone.has(Condition.attribute(style,red)),
                 "Company phone field has red border" );
     }
     @Test
@@ -348,18 +348,15 @@ public class InvoicePageTest extends ChromeRunner {
                 .AddThirdProductToCart()
                 .ClickOnCart();
         invoicePageSteps.ClickOnContinueBtn();
-        Assert.assertFalse(invoicePageSteps.companyPhone.has(
-                        Condition.attribute("style","border: 1px solid red" )),
+        Assert.assertFalse(invoicePageSteps.companyPhone.has(Condition.attribute(style,red)),
                 "Company phone field does not have red border");
         invoicePageSteps.ClickOnSendBtn();
-        Assert.assertTrue(invoicePageSteps.companyPhone.has(
-                        Condition.attribute("style", "border: 1px solid red;")),
+        Assert.assertTrue(invoicePageSteps.companyPhone.has(Condition.attribute(style,red)),
                 "Company phone field has red border" );
         invoicePageSteps
                 .EnterCompanyPhone(nineDigitsInput)
                 .ClickOnSendBtn();
-        Assert.assertFalse(invoicePageSteps.companyPhone.has(
-                        Condition.attribute("style","border: 1px solid red" )),
+        Assert.assertFalse(invoicePageSteps.companyPhone.has(Condition.attribute(style,red)),
                 "Company phone field does not have red border");
     }
     @Test
@@ -373,18 +370,15 @@ public class InvoicePageTest extends ChromeRunner {
                 .AddThirdProductToCart()
                 .ClickOnCart();
         invoicePageSteps.ClickOnContinueBtn();
-        Assert.assertFalse(invoicePageSteps.companyDesiredDate.has(
-                        Condition.attribute("style","border: 1px solid red" )),
+        Assert.assertFalse(invoicePageSteps.companyDesiredDate.has(Condition.attribute(style,red)),
                 "Company Desired Date field does not have red border");
         invoicePageSteps.ClickOnSendBtn();
-        Assert.assertTrue(invoicePageSteps.companyDesiredDate.has(
-                        Condition.attribute("style", "border: 1px solid red;")),
+        Assert.assertTrue(invoicePageSteps.companyDesiredDate.has(Condition.attribute(style,red)),
                 "Company Desired Date field has red border" );
         invoicePageSteps
                 .EnterDesiredDate(fourDigitsInput)
                 .ClickOnSendBtn();
-        Assert.assertTrue(invoicePageSteps.companyDesiredDate.has(
-                        Condition.attribute("style", "border: 1px solid red;")),
+        Assert.assertTrue(invoicePageSteps.companyDesiredDate.has(Condition.attribute(style,red)),
                 "Company Desired Date field has red border" );
     }
     @Test
@@ -398,18 +392,15 @@ public class InvoicePageTest extends ChromeRunner {
                 .AddThirdProductToCart()
                 .ClickOnCart();
         invoicePageSteps.ClickOnContinueBtn();
-        Assert.assertFalse(invoicePageSteps.companyDesiredDate.has(
-                        Condition.attribute("style","border: 1px solid red" )),
+        Assert.assertFalse(invoicePageSteps.companyDesiredDate.has(Condition.attribute(style,red)),
                 "Company Desired Date field does not have red border");
         invoicePageSteps.ClickOnSendBtn();
-        Assert.assertTrue(invoicePageSteps.companyDesiredDate.has(
-                        Condition.attribute("style", "border: 1px solid red;")),
+        Assert.assertTrue(invoicePageSteps.companyDesiredDate.has(Condition.attribute(style,red)),
                 "Company Desired Date field has red border" );
         invoicePageSteps
                 .EnterDesiredDate(eightDigitsInput)
                 .ClickOnSendBtn();
-        Assert.assertFalse(invoicePageSteps.companyDesiredDate.has(
-                        Condition.attribute("style", "border: 1px solid red;")),
+        Assert.assertFalse(invoicePageSteps.companyDesiredDate.has(Condition.attribute(style,red)),
                 "Company Desired Date field does not have red border" );
     }
     @Test
@@ -423,18 +414,15 @@ public class InvoicePageTest extends ChromeRunner {
                 .AddThirdProductToCart()
                 .ClickOnCart();
         invoicePageSteps.ClickOnContinueBtn();
-        Assert.assertFalse(invoicePageSteps.companyEmail.has(
-                        Condition.attribute("style","border: 1px solid red" )),
+        Assert.assertFalse(invoicePageSteps.companyEmail.has(Condition.attribute(style,red)),
                 "Company email field does not have red border");
         invoicePageSteps.ClickOnSendBtn();
-        Assert.assertTrue(invoicePageSteps.companyEmail.has(
-                        Condition.attribute("style", "border: 1px solid red;")),
+        Assert.assertTrue(invoicePageSteps.companyEmail.has(Condition.attribute(style,red)),
                 "Company email field has red border" );
         invoicePageSteps
                 .EnterEmail(companyCorrectEmailInput)
                 .ClickOnSendBtn();
-        Assert.assertFalse(invoicePageSteps.companyEmail.has(
-                        Condition.attribute("style","border: 1px solid red" )),
+        Assert.assertFalse(invoicePageSteps.companyEmail.has(Condition.attribute(style,red)),
                 "Company email field does not have red border");
     }
     @Test
@@ -448,18 +436,15 @@ public class InvoicePageTest extends ChromeRunner {
                 .AddThirdProductToCart()
                 .ClickOnCart();
         invoicePageSteps.ClickOnContinueBtn();
-        Assert.assertFalse(invoicePageSteps.companyEmail.has(
-                        Condition.attribute("style","border: 1px solid red" )),
+        Assert.assertFalse(invoicePageSteps.companyEmail.has(Condition.attribute(style,red)),
                 "Company email field does not have red border");
         invoicePageSteps.ClickOnSendBtn();
-        Assert.assertTrue(invoicePageSteps.companyEmail.has(
-                        Condition.attribute("style", "border: 1px solid red;")),
+        Assert.assertTrue(invoicePageSteps.companyEmail.has(Condition.attribute(style,red)),
                 "Company email field has red border" );
         invoicePageSteps
                 .EnterEmail(companyIncorrectEmailInput)
                 .ClickOnSendBtn();
-        Assert.assertTrue(invoicePageSteps.companyEmail.has(
-                        Condition.attribute("style", "border: 1px solid red;")),
+        Assert.assertTrue(invoicePageSteps.companyEmail.has(Condition.attribute(style,red)),
                 "Company email field has red border" );
     }
     @Test
@@ -473,18 +458,15 @@ public class InvoicePageTest extends ChromeRunner {
                 .AddThirdProductToCart()
                 .ClickOnCart();
         invoicePageSteps.ClickOnContinueBtn();
-        Assert.assertFalse(invoicePageSteps.companyEmail.has(
-                        Condition.attribute("style","border: 1px solid red" )),
+        Assert.assertFalse(invoicePageSteps.companyEmail.has(Condition.attribute(style,red)),
                 "Company email field does not have red border");
         invoicePageSteps.ClickOnSendBtn();
-        Assert.assertTrue(invoicePageSteps.companyEmail.has(
-                        Condition.attribute("style", "border: 1px solid red;")),
+        Assert.assertTrue(invoicePageSteps.companyEmail.has(Condition.attribute(style,red)),
                 "Company email field has red border" );
         invoicePageSteps
                 .EnterEmail(companyIncorrectEmailInput_2)
                 .ClickOnSendBtn();
-        Assert.assertTrue(invoicePageSteps.companyEmail.has(
-                        Condition.attribute("style", "border: 1px solid red;")),
+        Assert.assertTrue(invoicePageSteps.companyEmail.has(Condition.attribute(style,red)),
                 "Company email field has red border" );
     }
     @Test
@@ -498,18 +480,15 @@ public class InvoicePageTest extends ChromeRunner {
                 .AddThirdProductToCart()
                 .ClickOnCart();
         invoicePageSteps.ClickOnContinueBtn();
-        Assert.assertFalse(invoicePageSteps.companyEmail.has(
-                        Condition.attribute("style","border: 1px solid red" )),
+        Assert.assertFalse(invoicePageSteps.companyEmail.has(Condition.attribute(style,red)),
                 "Company email field does not have red border");
         invoicePageSteps.ClickOnSendBtn();
-        Assert.assertTrue(invoicePageSteps.companyEmail.has(
-                        Condition.attribute("style", "border: 1px solid red;")),
+        Assert.assertTrue(invoicePageSteps.companyEmail.has(Condition.attribute(style,red)),
                 "Company email field has red border" );
         invoicePageSteps
                 .EnterEmail(companyIncorrectEmailInput_3)
                 .ClickOnSendBtn();
-        Assert.assertTrue(invoicePageSteps.companyEmail.has(
-                        Condition.attribute("style", "border: 1px solid red;")),
+        Assert.assertTrue(invoicePageSteps.companyEmail.has(Condition.attribute(style,red)),
                 "Company email field has red border" );
     }
 }

@@ -11,4 +11,6 @@ public interface InvoicePageData {
     String companyIncorrectEmailInput = "test.gmail.com";
     String companyIncorrectEmailInput_2 = "test@gmail";
     String companyIncorrectEmailInput_3 = "test.gmail@";
+    String style = "style";
+    String red = "border: 1px solid red;";
 }

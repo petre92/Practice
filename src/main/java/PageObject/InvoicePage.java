@@ -13,6 +13,8 @@ public class InvoicePage {
 
     legalEntity = $(byText("იურიდიული პირი")),
     individual = $(byText("ფიზიკური პირი")),
+    getLegalEntityForm = $(byClassName("effect_borders1")),
+    individualForm = $(byClassName("effect_borders2")),
     sendBtn = $(byId("btn2")),
     companyName = $(by("placeholder", "კომპანიის სახელწოდება")),
     companyCode = $(by("placeholder", "საიდენტიფიკაციო კოდი")),
